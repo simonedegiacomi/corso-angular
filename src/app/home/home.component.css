@@ -43,3 +43,7 @@ button {
         width: 70%;
     }
 }
+
+p.search-text {
+    margin-top: 10px;
+}

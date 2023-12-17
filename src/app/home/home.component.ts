@@ -20,6 +20,7 @@ import { MovieService } from '../movie.service';
         </button>
       </form>
     </section>
+    <p class="search-text" *ngIf="searched">Results for "{{ filterText }}"</p>
     <section class="results">
      <app-movie-card *ngFor="let movie of filteredMovies" [movie]="movie"></app-movie-card>
     </section>
@@ -30,7 +31,10 @@ export class HomeComponent {
   private readonly movieService = inject(MovieService)
   
   movies: Movie[];
+
   filteredMovies: Movie[];
+  filterText: string = "";
+  searched: boolean = false;
 
   constructor() {
     this.movies = this.movieService.getAllMovies();
@@ -38,11 +42,13 @@ export class HomeComponent {
   }
 
   search(filterTextValue: string) {
+    this.filterText = filterTextValue;
     this.filteredMovies = this
       .movies
       .filter(m => {
         return m.title.toLowerCase().includes(filterTextValue.toLocaleLowerCase())
       });
+    this.searched = this.filterText.length > 0;
   }
 
 }
