@@ -34,24 +34,29 @@ export class HomeComponent {
   private readonly router: Router = inject(Router);
 
   private readonly movieService = inject(MovieService)
-  
-  movies: Movie[];
 
-  filteredMovies: Movie[];
+  movies: Movie[] = [];
+
+  filteredMovies: Movie[] = [];
   filterText: string = "";
   searched: boolean = false;
 
-  
+
 
   constructor() {
-    this.movies = this.movieService.getAllMovies();
-    this.filteredMovies = this.movies;
+    this
+      .movieService
+      .getAllMovies()
+      .then(movies => {
+        this.movies = movies;
+        this.filteredMovies = this.movies;
 
-    const filterFromRoute = this.route.snapshot.queryParamMap.get("filter");
-    if (filterFromRoute) {
-      this.filterText = filterFromRoute;
-      this.search();
-    }
+        const filterFromRoute = this.route.snapshot.queryParamMap.get("filter");
+        if (filterFromRoute) {
+          this.filterText = filterFromRoute;
+          this.search();
+        }
+      });
   }
 
   search() {

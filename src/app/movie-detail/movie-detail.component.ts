@@ -33,10 +33,15 @@ export class MovieDetailComponent {
   
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly movieService = inject(MovieService)
-  movie: Movie | null;
+  movie: Movie | null = null;
 
   constructor() {
     const movieId = parseInt(this.route.snapshot.params['id'])
-    this.movie = this.movieService.getMovieById(movieId);
+    this
+    .movieService
+    .getMovieById(movieId)
+    .then(movie => {
+      this.movie = movie;
+    });
   }
 }
