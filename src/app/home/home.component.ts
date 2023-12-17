@@ -4,19 +4,20 @@ import { Movie } from '../movie';
 import { CommonModule } from '@angular/common';
 import { MovieService } from '../movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MovieCardComponent],
+  imports: [CommonModule, FormsModule, MovieCardComponent],
   template: `
     <section>
       <form>
-        <input type="text" placeholder="Filter by title" #filter>
+        <input type="text" placeholder="Filter by title" name="filter" [(ngModel)]="filterText">
         <button
           class="primary"
           type="button"
-          (click)="search(filter.value)">
+          (click)="search()">
           Search
         </button>
       </form>
@@ -48,16 +49,16 @@ export class HomeComponent {
 
     const filterFromRoute = this.route.snapshot.queryParamMap.get("filter");
     if (filterFromRoute) {
-      this.search(filterFromRoute);
+      this.filterText = filterFromRoute;
+      this.search();
     }
   }
 
-  search(filterTextValue: string) {
-    this.filterText = filterTextValue;
+  search() {
     this.filteredMovies = this
       .movies
       .filter(m => {
-        return m.title.toLowerCase().includes(filterTextValue.toLocaleLowerCase())
+        return m.title.toLowerCase().includes(this.filterText.toLocaleLowerCase())
       });
     this.searched = this.filterText.length > 0;
     if (this.searched) {
