@@ -11,22 +11,38 @@ import { MovieService } from '../movie.service';
   template: `
     <section>
       <form>
-        <input type="text" placeholder="Filter by title">
-        <button class="primary" type="button">Search</button>
+        <input type="text" placeholder="Filter by title" #filter>
+        <button
+          class="primary"
+          type="button"
+          (click)="search(filter.value)">
+          Search
+        </button>
       </form>
     </section>
     <section class="results">
-     <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+     <app-movie-card *ngFor="let movie of filteredMovies" [movie]="movie"></app-movie-card>
     </section>
   `,
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   private readonly movieService = inject(MovieService)
+  
   movies: Movie[];
+  filteredMovies: Movie[];
 
   constructor() {
     this.movies = this.movieService.getAllMovies();
+    this.filteredMovies = this.movies;
+  }
+
+  search(filterTextValue: string) {
+    this.filteredMovies = this
+      .movies
+      .filter(m => {
+        return m.title.toLowerCase().includes(filterTextValue.toLocaleLowerCase())
+      });
   }
 
 }
