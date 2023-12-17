@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
         </button>
       </form>
     </section>
-    <p class="search-text" *ngIf="searched">Results for "{{ filterText }}"</p>
+    <p class="search-text" *ngIf="searched">Results for "{{ searchedText }}"</p>
     <section class="results">
      <app-movie-card *ngFor="let movie of filteredMovies" [movie]="movie"></app-movie-card>
     </section>
@@ -40,6 +40,7 @@ export class HomeComponent {
   filteredMovies: Movie[] = [];
   filterText: string = "";
   searched: boolean = false;
+  searchedText: string = "";
 
 
 
@@ -66,13 +67,12 @@ export class HomeComponent {
         return m.title.toLowerCase().includes(this.filterText.toLocaleLowerCase())
       });
     this.searched = this.filterText.length > 0;
-    if (this.searched) {
-      this.router.navigate([], {
-        queryParams: {
-          filter: this.filterText
-        }
-      });
-    }
+    this.searchedText = this.filterText;
+    this.router.navigate([], {
+      queryParams: {
+        filter: this.filterText
+      }
+    });
   }
 
 }
