@@ -19,8 +19,14 @@ section {
     margin-bottom: 15px;
 }
 
+.movie-insert-review h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
 label,
-input {
+input,
+textarea {
     display: block;
 }
 
@@ -31,15 +37,19 @@ label {
     font-size: 12pt;
 }
 
-input {
+input, textarea {
     font-size: 16pt;
     margin-bottom: 15px;
     padding: 10px;
-    width: 400px;
+    min-width: 200px;
     border-top: none;
     border-right: none;
     border-left: none;
     border-bottom: solid .3px;
+}
+
+textarea {
+    font-size: 12pt;
 }
 
 

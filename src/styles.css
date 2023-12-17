@@ -21,3 +21,10 @@ button.primary {
     color: white;
     border-radius: 8px;
 }
+
+button:disabled.primary {
+    background: var(--shadow-color);
+    border: gray;
+    color: gray;
+    cursor: not-allowed;
+}
