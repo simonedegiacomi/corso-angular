@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ReviewService {
   private readonly client = axios.create();
 
