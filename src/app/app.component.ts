@@ -11,7 +11,10 @@ import { AuthService } from './auth.service';
     <main *ngIf="isLoggedIn(); else notLoggedIn">
       <header class="brand-name">
         <h2><img src="assets/movies-icon.png" class="brand-logo"/> Movies</h2>
-        <button>Logout</button>
+        <div>
+          <span>Hello {{authService.user?.username}} </span>
+          <button>Logout</button>
+        </div>
       </header>
       <section class="content">
         <router-outlet></router-outlet>
@@ -30,6 +33,6 @@ export class AppComponent {
   authService = inject(AuthService);
 
   isLoggedIn() {
-    return this.authService.isLoggedIn();
+    return this.authService.user !== null;
   }
 }

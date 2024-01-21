@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { Movie } from '../movie';
 import { CommonModule } from '@angular/common';
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
   `,
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly router: Router = inject(Router);
 
@@ -42,9 +42,8 @@ export class HomeComponent {
   searched: boolean = false;
   searchedText: string = "";
 
-
-
-  constructor() {
+  ngOnInit(): void {
+    console.log("HomeComponent OnInit");
     this
       .movieService
       .getAllMovies()
