@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { baseUrl } from '../config';
+import { baseUrl } from '../../environments/environment';
 import { client } from '../http-client';
 
 @Injectable()

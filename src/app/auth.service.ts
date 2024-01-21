@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
 import { client } from './http-client';
-import { baseUrl } from './config';
+import { baseUrl } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'

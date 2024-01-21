@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Movie } from './movie';
 import { client } from './http-client';
-import { baseUrl } from "./config";
+import { baseUrl } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
