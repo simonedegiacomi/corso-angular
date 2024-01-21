@@ -10,9 +10,9 @@ import { AuthService } from './auth.service';
   template: `
     <main *ngIf="isLoggedIn(); else notLoggedIn">
       <header class="brand-name">
-        <h2><img src="assets/movies-icon.png" class="brand-logo"/> Movies</h2>
+        <h2><img src="assets/movies-icon.png" class="brand-logo" /> Movies</h2>
         <div>
-          <span>Hello {{authService.user?.username}} </span>
+          <span>Hello {{ authService.user?.username }} </span>
           <button>Logout</button>
         </div>
       </header>
@@ -25,7 +25,7 @@ import { AuthService } from './auth.service';
       <router-outlet></router-outlet>
     </ng-template>
   `,
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'movies';

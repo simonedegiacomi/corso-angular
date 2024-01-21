@@ -1,32 +1,31 @@
 .movie-poster {
-    height: 600px;
-    object-fit: cover;
-    border-radius: 30px;
-    float: right;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 30px;
+  float: right;
 }
 
 section {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
- li {
-    font-size: 14pt;
-    list-style-type: none;
+li {
+  font-size: 14pt;
+  list-style-type: none;
 }
 
 .movie-insert-review {
-    font-size: 18pt;
-    margin-bottom: 15px;
+  font-size: 18pt;
+  margin-bottom: 15px;
 }
 
 .movie-insert-review h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
-
 @media (max-width: 700px) {
-    .movie-poster {
-        width: 100%;
-    }
+  .movie-poster {
+    width: 100%;
+  }
 }

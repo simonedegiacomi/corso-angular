@@ -8,7 +8,7 @@ export const isLoggedInGuard: CanActivateFn = async (route, state) => {
 
   const loggedIn = await authService.isLoggedIn();
   if (!loggedIn) {
-    router.navigateByUrl("/login")
+    router.navigateByUrl('/login');
     return false;
   }
 

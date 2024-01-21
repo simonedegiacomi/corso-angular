@@ -12,7 +12,7 @@ import { ReviewModule } from '../review/review.module';
   imports: [ReactiveFormsModule, ReviewModule],
   template: `
     <article>
-      <img class="movie-poster" [src]="movie?.poster">
+      <img class="movie-poster" [src]="movie?.poster" />
       <section>
         <h2>{{ movie?.title }}</h2>
         <h3>{{ movie?.director }}</h3>
@@ -31,25 +31,21 @@ import { ReviewModule } from '../review/review.module';
 
       <section class="movie-insert-review">
         <h2>Add your review</h2>
-        
+
         <app-review-form></app-review-form>
       </section>
     </article>
   `,
-  styleUrl: './movie-detail.component.css'
+  styleUrl: './movie-detail.component.css',
 })
 export class MovieDetailComponent {
-  
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
-  private readonly movieService = inject(MovieService)
+  private readonly movieService = inject(MovieService);
   movie: Movie | null = null;
 
   constructor() {
-    const movieId = parseInt(this.route.snapshot.params['id'])
-    this
-    .movieService
-    .getMovieById(movieId)
-    .then(movie => {
+    const movieId = parseInt(this.route.snapshot.params['id']);
+    this.movieService.getMovieById(movieId).then((movie) => {
       this.movie = movie;
     });
   }

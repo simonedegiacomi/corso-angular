@@ -4,19 +4,18 @@ import { client } from './http-client';
 import { baseUrl } from '../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MovieService {
-
-  constructor() { }
+  constructor() {}
 
   async getAllMovies(): Promise<Movie[]> {
-    const response = await client.get(`${baseUrl}/movies`)
+    const response = await client.get(`${baseUrl}/movies`);
     return response.data;
   }
 
   async getMovieById(id: number): Promise<Movie | null> {
-    const response = await client.get(`${baseUrl}/movies/${id}`)
+    const response = await client.get(`${baseUrl}/movies/${id}`);
     return response.data;
   }
 }

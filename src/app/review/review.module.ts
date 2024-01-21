@@ -4,21 +4,10 @@ import { ReviewFormComponent } from './review-form/review-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReviewService } from './review.service';
 
-
-
 @NgModule({
-  declarations: [
-    ReviewFormComponent,
-  ],
-  providers: [
-    ReviewService
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    ReviewFormComponent
-  ]
+  declarations: [ReviewFormComponent],
+  providers: [ReviewService],
+  imports: [CommonModule, ReactiveFormsModule],
+  exports: [ReviewFormComponent],
 })
-export class ReviewModule { }
+export class ReviewModule {}

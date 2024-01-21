@@ -1,6 +1,6 @@
-const express = require('express')
-const axios = require('axios');
-const cors = require('cors');
+const express = require("express");
+const axios = require("axios");
+const cors = require("cors");
 
 let loggedIn = false;
 let loggedInUsername = null;
@@ -12,7 +12,7 @@ app.use(cors());
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
-  if (password === 'pass') {
+  if (password === "pass") {
     loggedInUsername = username;
     loggedInAt = new Date();
     loggedIn = true;
@@ -20,7 +20,7 @@ app.post("/login", (req, res) => {
     return res.json({ username });
   } else {
     return res.status(401).json({
-      message: "Nome utente o password errati"
+      message: "Nome utente o password errati",
     });
   }
 });
@@ -38,7 +38,7 @@ function isLoggedIn() {
 app.get("/status", (req, res) => {
   if (isLoggedIn()) {
     return res.json({
-      username: loggedInUsername
+      username: loggedInUsername,
     });
   } else {
     return res.status(401).end();
@@ -50,10 +50,10 @@ app.use("/*", (req, res) => {
     axios({
       url: "http://localhost:3000" + req.baseUrl,
       method: req.method,
-      data: req.body
+      data: req.body,
     })
-      .then(r => res.json(r.data))
-      .catch(e => res.status(e.response?.status || 400).end());
+      .then((r) => res.json(r.data))
+      .catch((e) => res.status(e.response?.status || 400).end());
   } else {
     return res.status(401).end();
   }
@@ -61,4 +61,3 @@ app.use("/*", (req, res) => {
 
 const server = app.listen(3001);
 console.log(`Mock auth server listening on port ${server.address()?.port}`);
-

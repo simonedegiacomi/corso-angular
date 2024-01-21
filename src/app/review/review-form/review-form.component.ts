@@ -7,7 +7,7 @@ import { ReviewService } from '../review.service';
   template: `
     <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
       <label for="nickname">Nickname: </label>
-      <input id="nickname" type="text" formControlName="nickname">
+      <input id="nickname" type="text" formControlName="nickname" />
 
       <label for="review">Review: </label>
       <textarea id="review" rows="3" formControlName="review"></textarea>
@@ -15,23 +15,25 @@ import { ReviewService } from '../review.service';
       <button type="submit" class="primary">Send</button>
     </form>
   `,
-  styleUrl: './review-form.component.css'
+  styleUrl: './review-form.component.css',
 })
 export class ReviewFormComponent {
   reviewForm = new FormGroup({
-    nickname: new FormControl(""),
-    review: new FormControl("")
+    nickname: new FormControl(''),
+    review: new FormControl(''),
   });
-  
+
   reviewService = inject(ReviewService);
 
   submitReview() {
-    this.reviewService.createReview(
-      this.reviewForm.value.nickname ?? "",
-      this.reviewForm.value.review ?? ""
-    ).then(() => {
-      this.reviewForm.reset();
-      alert("Review submitted!");
-    });
+    this.reviewService
+      .createReview(
+        this.reviewForm.value.nickname ?? '',
+        this.reviewForm.value.review ?? '',
+      )
+      .then(() => {
+        this.reviewForm.reset();
+        alert('Review submitted!');
+      });
   }
 }

@@ -1,28 +1,27 @@
 div.login-component {
-    display: flex;
-    margin-top: 32px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  margin-top: 32px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 300px;
-    border-radius: 25px;
-    padding: 16px;
-    background-color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 300px;
+  border-radius: 25px;
+  padding: 16px;
+  background-color: var(--accent-color);
 }
 
 form > div {
-    display: flex;
-    gap: 4px;
-    flex-direction: column;
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
 }
 
 form > div > span {
-    color: red;
+  color: red;
 }
-

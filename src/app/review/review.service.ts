@@ -4,12 +4,12 @@ import { client } from '../http-client';
 
 @Injectable()
 export class ReviewService {
-
-  constructor() { }
+  constructor() {}
 
   async createReview(nickname: string, review: string) {
     await client.post(`${baseUrl}/reviews`, {
-      nickname, review
+      nickname,
+      review,
     });
   }
 }
