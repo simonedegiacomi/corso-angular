@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DynamicConfigService } from './dynamic-config.service';
 import { client } from './http-client';
 import { Movie } from './movie';
 
@@ -7,19 +6,15 @@ import { Movie } from './movie';
   providedIn: 'root',
 })
 export class MovieService {
-  constructor(private readonly dynamicConfigService: DynamicConfigService) {}
+  constructor() {}
 
   async getAllMovies(): Promise<Movie[]> {
-    const response = await client.get(
-      `${this.dynamicConfigService.baseUrl}/movies`,
-    );
+    const response = await client.get(`/movies`);
     return response.data;
   }
 
   async getMovieById(id: number): Promise<Movie | null> {
-    const response = await client.get(
-      `${this.dynamicConfigService.baseUrl}/movies/${id}`,
-    );
+    const response = await client.get(`/movies/${id}`);
     return response.data;
   }
 }

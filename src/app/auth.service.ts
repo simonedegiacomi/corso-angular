@@ -14,6 +14,7 @@ export class AuthService {
   user: User | null = null;
 
   constructor(private readonly dynamicConfigservice: DynamicConfigService) {
+    this.authClient.defaults.baseURL = dynamicConfigservice.baseUrl;
     client.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -32,9 +33,7 @@ export class AuthService {
     }
 
     try {
-      const response = await this.authClient.get(
-        `${this.dynamicConfigservice.baseUrl}/status`,
-      );
+      const response = await this.authClient.get(`/status`);
       this.user = response.data;
       return true;
     } catch {
@@ -44,13 +43,10 @@ export class AuthService {
 
   async login(username: string, password: string): Promise<User> {
     try {
-      const response = await this.authClient.post(
-        `${this.dynamicConfigservice.baseUrl}/login`,
-        {
-          username,
-          password,
-        },
-      );
+      const response = await this.authClient.post(`/login`, {
+        username,
+        password,
+      });
       this.user = response.data;
       return this.user!;
     } catch (e: any) {

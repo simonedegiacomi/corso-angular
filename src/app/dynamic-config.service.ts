@@ -12,6 +12,7 @@ export class DynamicConfigService {
       const result = await client.get('/dynamic-config.json');
 
       Object.assign(this, result.data);
+      client.defaults.baseURL = this.baseUrl;
 
       return result.data;
     } catch (e) {
