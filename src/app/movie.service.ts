@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Movie } from './movie';
+import { DynamicConfigService } from './dynamic-config.service';
 import { client } from './http-client';
-import { baseUrl } from '../environments/environment';
+import { Movie } from './movie';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
-  constructor() {}
+  constructor(private readonly dynamicConfigService: DynamicConfigService) {}
 
   async getAllMovies(): Promise<Movie[]> {
-    const response = await client.get(`${baseUrl}/movies`);
+    const response = await client.get(
+      `${this.dynamicConfigService.baseUrl}/movies`,
+    );
     return response.data;
   }
 
   async getMovieById(id: number): Promise<Movie | null> {
-    const response = await client.get(`${baseUrl}/movies/${id}`);
+    const response = await client.get(
+      `${this.dynamicConfigService.baseUrl}/movies/${id}`,
+    );
     return response.data;
   }
 }

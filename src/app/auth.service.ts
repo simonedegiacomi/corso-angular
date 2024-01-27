@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import axios from 'axios';
 import { Router } from '@angular/router';
+import axios from 'axios';
+import { DynamicConfigService } from './dynamic-config.service';
 import { client } from './http-client';
-import { baseUrl } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class AuthService {
 
   user: User | null = null;
 
-  constructor() {
+  constructor(private readonly dynamicConfigservice: DynamicConfigService) {
     client.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -32,7 +32,9 @@ export class AuthService {
     }
 
     try {
-      const response = await this.authClient.get(`${baseUrl}/status`);
+      const response = await this.authClient.get(
+        `${this.dynamicConfigservice.baseUrl}/status`,
+      );
       this.user = response.data;
       return true;
     } catch {
@@ -42,10 +44,13 @@ export class AuthService {
 
   async login(username: string, password: string): Promise<User> {
     try {
-      const response = await this.authClient.post(`${baseUrl}/login`, {
-        username,
-        password,
-      });
+      const response = await this.authClient.post(
+        `${this.dynamicConfigservice.baseUrl}/login`,
+        {
+          username,
+          password,
+        },
+      );
       this.user = response.data;
       return this.user!;
     } catch (e: any) {
