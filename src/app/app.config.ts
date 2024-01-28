@@ -1,12 +1,12 @@
 import { APP_INITIALIZER, ApplicationConfig, LOCALE_ID } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { routeConfig } from './routes';
 import { DynamicConfigService } from './dynamic-config.service';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routeConfig),
+    provideRouter(routeConfig, withHashLocation()),
     {
       provide: APP_INITIALIZER,
       deps: [DynamicConfigService],

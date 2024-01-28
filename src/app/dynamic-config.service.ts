@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { client } from './http-client';
 
 @Injectable({
@@ -9,7 +9,10 @@ export class DynamicConfigService {
 
   async load(): Promise<any> {
     try {
-      const result = await client.get('/dynamic-config.json');
+      const configFile = isDevMode()
+        ? '/dynamic-config.json'
+        : '../dynamic-config.json';
+      const result = await client.get(configFile);
 
       Object.assign(this, result.data);
       client.defaults.baseURL = this.baseUrl;
