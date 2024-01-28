@@ -13,21 +13,28 @@ import { CommonModule } from '@angular/common';
   imports: [ReactiveFormsModule, ReviewModule, CommonModule],
   template: `
     <article>
-      <img class="movie-poster" [src]="movie?.poster" />
+      <img
+        class="movie-poster"
+        [src]="movie?.poster"
+        i18n-title
+        title="Poster"
+      />
       <section>
         <h2>{{ movie?.title }}</h2>
         <h3>{{ movie?.director }}</h3>
         <p>{{ movie?.plot }}</p>
       </section>
       <section class="data">
-        <h3>About this movie</h3>
+        <h3 i18n>About this movie</h3>
         <ul>
-          <li>Year: {{ movie?.year }}</li>
-          <li>Genre: {{ movie?.genre }}</li>
-          <li>Release date: {{ movie?.releaseDate | date }}</li>
-          <li>Duration: {{ movie?.runtimeMinutes }} min</li>
-          <li>IMDB rating: {{ movie?.imdbRating | number }} / 10</li>
-          <li>
+          <li i18n>Year: {{ movie?.year }}</li>
+          <li><ng-container i18n>Genre:</ng-container> {{ movie?.genre }}</li>
+          <li i18n>Release date: {{ movie?.releaseDate | date }}</li>
+          <li i18n="Duration of the movie in minutes">
+            Duration: {{ movie?.runtimeMinutes }} min
+          </li>
+          <li i18n>IMDB rating: {{ movie?.imdbRating | number }} / 10</li>
+          <li i18n>
             Production budget:
             {{ movie?.productionBudget | currency: movie?.budgetCurrency }}
           </li>
@@ -35,7 +42,7 @@ import { CommonModule } from '@angular/common';
       </section>
 
       <section class="movie-insert-review">
-        <h2>Add your review</h2>
+        <h2 i18n>Add your review</h2>
 
         <app-review-form></app-review-form>
       </section>

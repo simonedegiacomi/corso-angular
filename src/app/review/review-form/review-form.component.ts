@@ -9,10 +9,10 @@ import { ReviewService } from '../review.service';
       <label for="nickname">Nickname: </label>
       <input id="nickname" type="text" formControlName="nickname" />
 
-      <label for="review">Review: </label>
+      <label for="review" i18n>Review: </label>
       <textarea id="review" rows="3" formControlName="review"></textarea>
 
-      <button type="submit" class="primary">Send</button>
+      <button type="submit" class="primary" i18n>Send</button>
     </form>
   `,
   styleUrl: './review-form.component.css',
@@ -33,7 +33,7 @@ export class ReviewFormComponent {
       )
       .then(() => {
         this.reviewForm.reset();
-        alert('Review submitted!');
+        alert($localize`Review submitted!`);
       });
   }
 }

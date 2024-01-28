@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="4759501379960802880" datatype="html">
+        <source>Poster</source>
+        <target>Copertina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2208104521191488606" datatype="html">
+        <source>About this movie</source>
+        <target>Dettagli</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1190889488721783265" datatype="html">
+        <source>Year: <x id="INTERPOLATION" equiv-text="{{ movie?.year }}"/></source>
+        <target>Anno: <x id="INTERPOLATION" equiv-text="{{ movie?.year }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7257605315830754469" datatype="html">
+        <source>Genre:</source>
+        <target>Genere:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2971085377283382753" datatype="html">
+        <source>Release date: <x id="INTERPOLATION" equiv-text="{{ movie?.releaseDate | date }}"/></source>
+        <target>Data di rilascio: <x id="INTERPOLATION" equiv-text="{{ movie?.releaseDate | date }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4892323874584940772" datatype="html">
+        <source> Duration: <x id="INTERPOLATION" equiv-text="{{ movie?.runtimeMinutes }}"/> min </source>
+        <target> Durata: <x id="INTERPOLATION" equiv-text="{{ movie?.runtimeMinutes }}"/> min </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+        <note priority="1" from="description">Duration of the movie in minutes</note>
+      </trans-unit>
+      <trans-unit id="8934612365348363766" datatype="html">
+        <source>IMDB rating: <x id="INTERPOLATION" equiv-text="{{ movie?.imdbRating | number }}"/> / 10</source>
+        <target>Voto IMDB: <x id="INTERPOLATION" equiv-text="{{ movie?.imdbRating | number }}"/> / 10</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">36,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2182701408435351236" datatype="html">
+        <source> Production budget: <x id="INTERPOLATION" equiv-text="{{ movie?.productionBudget | currency: movie?.budgetCurrency }}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">38,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6796532343204294212" datatype="html">
+        <source>Add your review</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/movie-detail/movie-detail.component.ts</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8397666714156601228" datatype="html">
+        <source>Review: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/review/review-form/review-form.component.ts</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6490688569532630280" datatype="html">
+        <source>Send</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/review/review-form/review-form.component.ts</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2444957278473510123" datatype="html">
+        <source>Review submitted!</source>
+        <target>Recensione inviata!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/review/review-form/review-form.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
