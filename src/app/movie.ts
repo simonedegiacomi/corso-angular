@@ -5,9 +5,11 @@ export interface Movie {
   year: string;
   genre: string;
 
-  releaseDate: string;
+  releaseDate: string; // ISO 8601
   runtimeMinutes: number;
   director: string;
   plot: string;
   imdbRating: number;
+  productionBudget: number;
+  budgetCurrency: string; // ISO 4217
 }

@@ -5,11 +5,12 @@ import { MovieService } from '../movie.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ReviewService } from '../review/review.service';
 import { ReviewModule } from '../review/review.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-movie-detail',
   standalone: true,
-  imports: [ReactiveFormsModule, ReviewModule],
+  imports: [ReactiveFormsModule, ReviewModule, CommonModule],
   template: `
     <article>
       <img class="movie-poster" [src]="movie?.poster" />
@@ -23,9 +24,13 @@ import { ReviewModule } from '../review/review.module';
         <ul>
           <li>Year: {{ movie?.year }}</li>
           <li>Genre: {{ movie?.genre }}</li>
-          <li>Release date: {{ movie?.releaseDate }}</li>
+          <li>Release date: {{ movie?.releaseDate | date }}</li>
           <li>Duration: {{ movie?.runtimeMinutes }} min</li>
-          <li>IMDB rating: {{ movie?.imdbRating }} / 10</li>
+          <li>IMDB rating: {{ movie?.imdbRating | number }} / 10</li>
+          <li>
+            Production budget:
+            {{ movie?.productionBudget | currency: movie?.budgetCurrency }}
+          </li>
         </ul>
       </section>
 
