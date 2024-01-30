@@ -6,11 +6,17 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ReviewService } from '../review/review.service';
 import { ReviewModule } from '../review/review.module';
 import { CommonModule } from '@angular/common';
+import { EditMoviePopupComponent } from '../edit-movie-popup/edit-movie-popup.component';
 
 @Component({
   selector: 'app-movie-detail',
   standalone: true,
-  imports: [ReactiveFormsModule, ReviewModule, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    ReviewModule,
+    CommonModule,
+    EditMoviePopupComponent,
+  ],
   template: `
     <article>
       <img
@@ -41,12 +47,21 @@ import { CommonModule } from '@angular/common';
         </ul>
       </section>
 
+      <button (click)="openEditMoviePopup()" class="primary">Edit</button>
+
       <section class="movie-insert-review">
         <h2 i18n>Add your review</h2>
 
         <app-review-form></app-review-form>
       </section>
     </article>
+
+    <app-edit-movie-popup
+      *ngIf="movie"
+      [(visible)]="editMoviePopupOpen"
+      [movie]="movie"
+      (movieChanged)="this.movie = $event"
+    ></app-edit-movie-popup>
   `,
   styleUrl: './movie-detail.component.css',
 })
@@ -55,10 +70,16 @@ export class MovieDetailComponent {
   private readonly movieService = inject(MovieService);
   movie: Movie | null = null;
 
+  editMoviePopupOpen = false;
+
   constructor() {
     const movieId = parseInt(this.route.snapshot.params['id']);
     this.movieService.getMovieById(movieId).then((movie) => {
       this.movie = movie;
     });
+  }
+
+  openEditMoviePopup() {
+    this.editMoviePopupOpen = true;
   }
 }
